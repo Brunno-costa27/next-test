@@ -18,7 +18,7 @@ const ReservationOverlay: React.FC<ReservationOverlayProps> = ({ reservations, d
   };
 
   return (
-    <div className="absolute inset-0 grid grid-cols-7 pointer-events-none justify-center items-center">
+    <div className="absolute inset-0 grid grid-cols-7 pointer-events-none">
       {reservations.map((reservation, index) => {
         const checkinDate = moment(reservation.checkin);
         const checkoutDate = moment(reservation.checkout);
@@ -50,6 +50,7 @@ const ReservationOverlay: React.FC<ReservationOverlayProps> = ({ reservations, d
                     gridRow: `${currentRow}`,
                     zIndex: 10,
                     fontFamily: 'Airbnb Cereal VF, Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif',
+                    alignSelf: 'center', // Alinha o conteúdo na célula
                   }}
                 >
                   {isFirstRow ? reservation.name : null}
