@@ -23,7 +23,7 @@ const CalendarCell: React.FC<CalendarCellProps> = ({ date, value, isSelected, on
       
       <div className="text-xs text-center py-2 md:text-sm lg:text-base">{date.format('D')}</div>
       
-      <div className="text-[10px] md:text-sm lg:text-base mt-auto text-center">R$241</div>
+      {/* <div className="text-[10px] md:text-sm lg:text-base mt-auto text-center">R$241</div> */}
     </div>
   );
 };

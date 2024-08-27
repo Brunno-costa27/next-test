@@ -6,6 +6,7 @@ const App: React.FC = () => {
   const reservations = [
     // Janeiro
     { name: 'Ana', checkin: '2024-01-02', checkout: '2024-01-05' },
+    { name: 'bel', checkin: '2024-01-02', checkout: '2024-01-03' },
     { name: 'João', checkin: '2024-01-07', checkout: '2024-01-10' },
     { name: 'Maria', checkin: '2024-01-12', checkout: '2024-01-15' },
     { name: 'Carlos', checkin: '2024-01-17', checkout: '2024-01-20' },
@@ -94,7 +95,7 @@ const App: React.FC = () => {
   
     // Dezembro
     { name: 'Bruna', checkin: '2024-12-02', checkout: '2024-12-05' },
-    { name: 'Felipe', checkin: '2024-12-07', checkout: '2024-12-10' },
+    { name: 'Felipe', checkin: '2024-12-08', checkout: '2024-12-10' },
     { name: 'Rafael', checkin: '2024-12-12', checkout: '2024-12-15' },
     { name: 'Julia', checkin: '2024-12-17', checkout: '2024-12-20' },
     { name: 'Mariana', checkin: '2024-12-22', checkout: '2024-12-25' },
