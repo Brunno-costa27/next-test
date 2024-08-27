@@ -89,7 +89,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       <div key={monthYear} className="relative">
         <div
           key={monthYear}
-          className="col-span-7 py-6 px-4 text-lg md:text-lg lg:text-2xl font-medium sticky top-0 z-10 h-16 lg:h-28"
+          className="col-span-7 py-6 px-4 text-lg md:text-lg lg:text-2xl font-medium sticky top-0 z-20 h-16 lg:h-28"
           style={{ backgroundColor: "white" }}
         >
           {monthYear}
@@ -121,9 +121,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
              </>
             );
           })}
-          <div className="">
             <ReservationOverlay reservations={this.props.reservations} daysArray={days} />
-          </div>
         </div>
       </div>
     );
@@ -149,7 +147,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
           initialTopMostItemIndex={this.state.currentMonthIndex}
           itemContent={(index) => this.renderMonth(index)}
           style={{ height: "100vh" }}
-          increaseViewportBy={{ top: 4000, bottom: 4000 }}
+          // increaseViewportBy={{ top: 4000, bottom: 4000 }}
           // overscan={50} 
         />
       </div>
