@@ -7,9 +7,9 @@ const App: React.FC = () => {
     // Janeiro
     { name: 'Ana', checkin: '2024-01-02', checkout: '2024-01-05' },
     { name: 'bel', checkin: '2024-01-02', checkout: '2024-01-03' },
-    { name: 'João', checkin: '2024-01-07', checkout: '2024-01-10' },
+    { name: 'João', checkin: '2024-01-08', checkout: '2024-01-10' },
     { name: 'Maria', checkin: '2024-01-12', checkout: '2024-01-15' },
-    { name: 'Carlos', checkin: '2024-01-17', checkout: '2024-01-20' },
+    { name: 'Junior', checkin: '2024-01-18', checkout: '2024-01-19' },
     { name: 'Lucas', checkin: '2024-01-22', checkout: '2024-01-25' },
     { name: 'Fernanda', checkin: '2024-01-27', checkout: '2024-01-30' },
   
@@ -23,7 +23,7 @@ const App: React.FC = () => {
   
     // Março
     { name: 'Isabela', checkin: '2024-03-03', checkout: '2024-03-06' },
-    { name: 'Rodrigo', checkin: '2024-03-08', checkout: '2024-03-11' },
+    { name: 'Rodrigo', checkin: '2024-03-09', checkout: '2024-03-11' },
     { name: 'Paula', checkin: '2024-03-13', checkout: '2024-03-16' },
     { name: 'Thiago', checkin: '2024-03-18', checkout: '2024-03-21' },
     { name: 'Sofia', checkin: '2024-03-23', checkout: '2024-03-26' },
@@ -62,8 +62,8 @@ const App: React.FC = () => {
     { name: 'Gustavo', checkin: '2024-07-27', checkout: '2024-07-30' },
   
     // Agosto
-    { name: 'Isabela', checkin: '2024-08-02', checkout: '2024-08-05' },
-    { name: 'Rodrigo', checkin: '2024-08-04', checkout: '2024-08-08' },
+    { name: 'Isabela', checkin: '2024-08-02', checkout: '2024-08-04' },
+    { name: 'Rodrigo', checkin: '2024-08-05', checkout: '2024-08-08' },
     { name: 'Paula', checkin: '2024-08-12', checkout: '2024-08-15' },
     { name: 'Thiago', checkin: '2024-08-17', checkout: '2024-08-20' },
     { name: 'Sofia', checkin: '2024-08-22', checkout: '2024-08-25' },

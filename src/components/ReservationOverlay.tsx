@@ -138,7 +138,7 @@ const ReservationOverlay: React.FC<ReservationOverlayProps> = ({ reservations, d
   });
 
   return (
-    <div className="absolute inset-0 grid grid-cols-7 pointer-events-none mt-10 md:gap-10 md:mt-10">
+    <div className="absolute inset-0 grid grid-cols-7 pointer-events-none h-full mt-10">
       {Object.keys(reservationsByDay).map((dayIndexStr, groupIndex) => {
         const dayIndex = parseInt(dayIndexStr, 10);
         const dayReservations = reservationsByDay[dayIndex];
@@ -178,7 +178,7 @@ const ReservationOverlay: React.FC<ReservationOverlayProps> = ({ reservations, d
                       zIndex: 10,
                       paddingLeft: isFirstRow ? '4px' : '0px',
                       paddingRight: '4px',
-                      paddingTop: `${reservationIndex * 25}px`, // Adiciona padding top para empilhamento
+                      paddingTop: `${reservationIndex * 40}px`, 
                     }}
                   >
                     <div
@@ -208,3 +208,9 @@ const ReservationOverlay: React.FC<ReservationOverlayProps> = ({ reservations, d
 };
 
 export default ReservationOverlay;
+
+
+
+
+
+
