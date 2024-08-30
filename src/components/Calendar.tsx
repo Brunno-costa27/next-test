@@ -106,7 +106,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
             const isSelected = date === this.state.selectedDate;
             console.log(reservation)
             return (
-             <div className="flex justify-center items-center">
+             <div key={date} className="flex justify-center items-center">
               <CalendarCell
               key={date}
               date={day}
