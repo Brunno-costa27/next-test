@@ -138,7 +138,7 @@ const ReservationOverlay: React.FC<ReservationOverlayProps> = ({ reservations, d
   });
 
   return (
-    <div className="absolute inset-0 grid grid-cols-7 pointer-events-none h-full mt-10">
+    <div className="absolute inset-0 grid grid-cols-7 pointer-events-none h-full items-center">
       {Object.keys(reservationsByDay).map((dayIndexStr, groupIndex) => {
         const dayIndex = parseInt(dayIndexStr, 10);
         const dayReservations = reservationsByDay[dayIndex];
@@ -212,5 +212,59 @@ export default ReservationOverlay;
 
 
 
+
+// import React from 'react';
+//   import moment from 'moment';
+  
+//   interface Reservation {
+//     name: string;
+//     checkin: string;
+//     checkout: string;
+//   }
+  
+//   interface ReservationOverlayProps {
+//     reservations: Reservation[];
+//     daysArray: (moment.Moment | null)[];
+//   }
+  
+//   const ReservationOverlay: React.FC<ReservationOverlayProps> = ({ reservations, daysArray }) => {
+//     return (
+//       <div className="absolute inset-0 grid grid-cols-7 pointer-events-none h-full z-10">
+//         {daysArray.map((day, dayIndex) => {
+//           if (!day) return null;
+  
+//           // Filtra as reservas que devem aparecer neste dia específico
+//           const dayReservations = reservations.filter(
+//             (reservation) =>
+//               moment(reservation.checkin).isSameOrBefore(day, 'day') &&
+//               moment(reservation.checkout).isSameOrAfter(day, 'day')
+//           );
+  
+//           return (
+//             <div
+//               key={dayIndex}
+//               className="relative h-full flex flex-col justify-center items-center"
+//               style={{ gridColumn: `${dayIndex % 7 + 1}` }}
+//             >
+//               {dayReservations.map((reservation, reservationIndex) => (
+//                 <div
+//                   key={reservationIndex}
+//                   className="bg-gray-500 text-white rounded-lg px-2 flex h-5 text-xs items-center mb-1"
+//                   style={{
+//                     width: '100%',
+//                     fontFamily: 'Airbnb Cereal VF, Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif',
+//                   }}
+//                 >
+//                   {reservation.name}
+//                 </div>
+//               ))}
+//             </div>
+//           );
+//         })}
+//       </div>
+//     );
+//   };
+  
+//   export default ReservationOverlay;
 
 

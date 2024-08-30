@@ -8,17 +8,16 @@ const App: React.FC = () => {
     { name: 'Ana', checkin: '2024-01-02', checkout: '2024-01-05' },
     { name: 'bel', checkin: '2024-01-02', checkout: '2024-01-03' },
     { name: 'João', checkin: '2024-01-08', checkout: '2024-01-10' },
-    { name: 'Maria', checkin: '2024-01-12', checkout: '2024-01-15' },
+    { name: 'Didi', checkin: '2024-01-09', checkout: '2024-01-10' },
     { name: 'Junior', checkin: '2024-01-18', checkout: '2024-01-19' },
     { name: 'Lucas', checkin: '2024-01-22', checkout: '2024-01-25' },
-    { name: 'Fernanda', checkin: '2024-01-27', checkout: '2024-01-30' },
+    { name: 'Dida', checkin: '2024-01-22', checkout: '2024-01-24' },
   
     // Fevereiro
     { name: 'Bruna', checkin: '2024-02-02', checkout: '2024-02-05' },
     { name: 'Felipe', checkin: '2024-02-07', checkout: '2024-02-10' },
     { name: 'Rafael', checkin: '2024-02-12', checkout: '2024-02-15' },
     { name: 'Julia', checkin: '2024-02-17', checkout: '2024-02-20' },
-    { name: 'Mariana', checkin: '2024-02-22', checkout: '2024-02-25' },
     { name: 'Gustavo', checkin: '2024-02-27', checkout: '2024-02-29' },
   
     // Março
@@ -46,15 +45,12 @@ const App: React.FC = () => {
     { name: 'Guilherme', checkin: '2024-05-27', checkout: '2024-05-30' },
   
     // Junho
-    { name: 'Ana', checkin: '2024-06-02', checkout: '2024-06-05' },
-    { name: 'João', checkin: '2024-06-07', checkout: '2024-06-10' },
     { name: 'Maria', checkin: '2024-06-12', checkout: '2024-06-15' },
     { name: 'Carlos', checkin: '2024-06-17', checkout: '2024-06-20' },
     { name: 'Lucas', checkin: '2024-06-22', checkout: '2024-06-25' },
     { name: 'Fernanda', checkin: '2024-06-27', checkout: '2024-06-30' },
   
     // Julho
-    { name: 'Bruna', checkin: '2024-07-02', checkout: '2024-07-05' },
     { name: 'Felipe', checkin: '2024-07-07', checkout: '2024-07-10' },
     { name: 'Rafael', checkin: '2024-07-12', checkout: '2024-07-15' },
     { name: 'Julia', checkin: '2024-07-17', checkout: '2024-07-20' },
@@ -86,24 +82,18 @@ const App: React.FC = () => {
     { name: 'Guilherme', checkin: '2024-10-27', checkout: '2024-10-30' },
   
     // Novembro
-    { name: 'Ana', checkin: '2024-11-02', checkout: '2024-11-05' },
-    { name: 'João', checkin: '2024-11-07', checkout: '2024-11-10' },
-    { name: 'Maria', checkin: '2024-11-12', checkout: '2024-11-15' },
     { name: 'Carlos', checkin: '2024-11-17', checkout: '2024-11-20' },
     { name: 'Lucas', checkin: '2024-11-22', checkout: '2024-11-25' },
-    { name: 'Fernanda', checkin: '2024-11-27', checkout: '2024-11-30' },
   
     // Dezembro
     { name: 'Bruna', checkin: '2024-12-02', checkout: '2024-12-05' },
-    { name: 'Felipe', checkin: '2024-12-08', checkout: '2024-12-10' },
+    { name: 'Felipe', checkin: '2024-12-07', checkout: '2024-12-10' },
     { name: 'Rafael', checkin: '2024-12-12', checkout: '2024-12-15' },
+    { name: 'Rafael leão', checkin: '2024-12-13', checkout: '2024-12-15' },
     { name: 'Julia', checkin: '2024-12-17', checkout: '2024-12-20' },
-    { name: 'Mariana', checkin: '2024-12-22', checkout: '2024-12-25' },
     { name: 'Gustavo', checkin: '2024-12-27', checkout: '2024-12-30' },
   ];
   
-
-
   return (
     <div className='w-full h-full bg-[FFFFFF]'>
       <Calendar reservations={reservations} />

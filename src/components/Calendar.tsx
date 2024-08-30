@@ -81,10 +81,6 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
 
     const { monthYear, days } = monthsArray[index];
 
-    console.log("Mês e ano", monthYear)
-    console.log("Dias", days)
-
-
     return (
       <div key={monthYear} className="relative">
         <div
@@ -110,18 +106,22 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
             const isSelected = date === this.state.selectedDate;
             console.log(reservation)
             return (
-             <>
+             <div className="flex justify-center items-center">
               <CalendarCell
               key={date}
               date={day}
-              value={value}
+              // value={value}
               isSelected={isSelected}
               onClick={this.handleCellClick}
+              reservations={this.props.reservations}
               />
-             </>
+              
+            {/* <ReservationOverlay reservations={this.props.reservations} daysArray={days} /> */}
+
+            
+             </div>
             );
           })}
-            <ReservationOverlay reservations={this.props.reservations} daysArray={days} />
         </div>
       </div>
     );
