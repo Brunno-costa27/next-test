@@ -104,7 +104,6 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
             );
             const value = reservation ? reservation.name : "";
             const isSelected = date === this.state.selectedDate;
-            console.log(reservation)
             return (
              <div key={date} className="flex justify-center items-center">
               <CalendarCell

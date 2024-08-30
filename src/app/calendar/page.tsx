@@ -67,6 +67,7 @@ const App: React.FC = () => {
   
     // Setembro
     { name: 'Lucia', checkin: '2024-09-02', checkout: '2024-09-05' },
+    { name: 'Lucinha', checkin: '2024-09-03', checkout: '2024-09-05' },
     { name: 'Victor', checkin: '2024-09-07', checkout: '2024-09-10' },
     { name: 'Beatriz', checkin: '2024-09-12', checkout: '2024-09-15' },
     { name: 'Henrique', checkin: '2024-09-17', checkout: '2024-09-20' },

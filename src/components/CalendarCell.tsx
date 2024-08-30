@@ -22,10 +22,10 @@
 //       onClick={() => onClick(date.format('YYYY-MM-DD'))}
 //       style={{ gridColumn: `span ${colSpan || 1}` }}
 //     >
-      
+
 //       <div className="text-xs text-center py-2 md:text-sm lg:text-base">{date.format('D')}</div>
 //       {/* <ReservationOverlay reservations={this.props.reservations} daysArray={days} /> */}
-      
+
 //       {/* <div className="text-[10px] md:text-sm lg:text-base mt-auto text-center">R$241</div> */}
 //     </div>
 //   );
@@ -130,8 +130,8 @@
 //     }
 // };
 
-  
-  
+
+
 
 //   return (
 //     <div
@@ -374,10 +374,10 @@
 //   const getSpanForCurrentCell = (reservation: Reservation) => {
 //     const dayOfWeek = date.day(); // Dia da semana da célula atual
 //     const daysUntilEndOfWeek = 6 - dayOfWeek; // Quantos dias faltam até o final da semana (sábado)
-    
+
 //     // Dias restantes até o checkout, incluindo o próprio dia de checkout
 //     const daysUntilCheckout = moment(reservation.checkout).diff(date, 'days') + 1;
-  
+
 //     // Retornar o menor valor entre os dias até o final da semana e os dias até o checkout
 //     return Math.min(daysUntilEndOfWeek + 1, daysUntilCheckout);
 //   };
@@ -460,12 +460,12 @@
 //   const getSpanForCurrentCell = (reservation: Reservation) => {
 //     const checkinDate = moment(reservation.checkin);
 //     const checkoutDate = moment(reservation.checkout);
-    
+
 //     // Verifica se a reserva se estende para a próxima semana
 //     const dayOfWeek = date.day(); // Dia da semana da célula atual (0 = domingo, 6 = sábado)
 //     const daysRemainingInWeek = 6 - dayOfWeek; // Dias restantes até o final da semana (sábado)
 //     const daysUntilCheckout = checkoutDate.diff(date, 'days') + 1; // Dias restantes até o checkout, incluindo o checkout
-  
+
 //     if (daysUntilCheckout > daysRemainingInWeek + 1) {
 //       // Se a reserva atravessa a semana, preencher até o final da semana
 //       return daysRemainingInWeek + 1;
@@ -555,6 +555,25 @@ const CalendarCell: React.FC<CalendarCellProps> = ({ date, isSelected, onClick, 
     return Math.min(daysUntilEndOfWeek + 1, daysUntilCheckout);
   };
 
+
+// Função para verificar se a reserva cobre sábado e domingo
+const isReservationCoveringWeekend = (reservation: Reservation) => {
+  const checkin = moment(reservation.checkin);
+  const checkout = moment(reservation.checkout);
+
+  // Define o sábado e o domingo da semana do check-in
+  const saturday = checkin.clone().day(6); // 6 é sábado
+  const sunday = checkin.clone().day(0); // 0 é domingo
+
+  // Verifica se a reserva cobre o sábado e o domingo
+  const coversSaturday = checkin.isSameOrBefore(saturday, 'day') && checkout.isSameOrAfter(saturday, 'day');
+  const coversSunday = checkin.isSameOrBefore(sunday, 'day') && checkout.isSameOrAfter(sunday, 'day');
+  console.log(reservation.name)
+  console.log("Sábado", coversSaturday)
+  console.log("Domingo", coversSunday)
+  return coversSaturday && !coversSunday;
+};
+
   return (
     <div
       className={cellStyle}
@@ -567,20 +586,23 @@ const CalendarCell: React.FC<CalendarCellProps> = ({ date, isSelected, onClick, 
       <div className="relative flex flex-col space-y-4 lg:space-y-10">
         {dayReservations.map((reservation, index) => {
           const span = getSpanForCurrentCell(reservation);
-          const isEndOfWeek = date.day() === 6; // Verifica se é o final da semana
+          const isEndOfWeek = date.day() === 6; // Verifica se é sábado
           const isFirstOfWeek = date.day() === 0; // Verifica se é domingo
+          const isStartOnSunday = moment(reservation.checkin).day() === 0; // Verifica se a reserva começa no domingo
+          const coversWeekend = isReservationCoveringWeekend(reservation)
 
-          console.log(isEndOfWeek)
+          console.log(coversWeekend);
+          
           return isStartOfReservation(reservation) || isContinuationOfReservation(reservation) ? (
             <div
               key={index}
-              className="absolute bg-gray-500 text-white rounded-full px-1 sm:px-2 h-3 text-[8px] flex items-center md:h-8 md:text-base truncate tracking-tighter font-semibold"
+              className="absolute bg-gray-500 text-white rounded-full px-1 sm:px-5 lg:mr-10 h-3 text-[8px] flex items-center md:h-8 md:text-base truncate tracking-tighter font-semibold"
               style={{
                 gridColumn: `span ${span}`,
                 fontFamily: 'Airbnb Cereal VF, Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif',
-                left: isFirstOfWeek ? '-10px' : '0',
-                borderTopLeftRadius: isFirstOfWeek ? "0px" : "",
-                borderBottomLeftRadius: isFirstOfWeek ? "0px" : "",
+                // left: coversWeekend ? '-20px' : '0',
+                left: isStartOnSunday ? '2px' : isFirstOfWeek ? '-10px' : '0',
+                
                 zIndex: 1,
                 width: isEndOfWeek ? '130%' : `calc(100% * ${span})`,
                 overflow: 'hidden',
