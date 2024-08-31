@@ -59,25 +59,36 @@ const isReservationCoveringWeekend = (reservation: Reservation) => {
   return coversSaturday && !coversSunday;
 };
 
-  return (
-    <div
-      className={cellStyle}
-      onClick={() => onClick(date.format('YYYY-MM-DD'))}
-      style={{ gridColumn: `span ${colSpan || 1}` }}
-    >
-      <div className="text-[10px] sm:text-xs text-center py-1 sm:py-2 md:text-sm lg:text-base">{date.format('D')}</div>
+return (
+  <div
+    className={cellStyle}
+    onClick={() => onClick(date.format('YYYY-MM-DD'))}
+    style={{ gridColumn: `span ${colSpan || 1}` }}
+  >
+    <div className="text-[10px] sm:text-xs text-center py-1 sm:py-2 md:text-sm lg:text-base">{date.format('D')}</div>
 
-      {/* Renderização das reservas dentro da célula */}
-      <div className="relative flex flex-col space-y-4 lg:space-y-10">
-        {dayReservations.map((reservation, index) => {
+    {/* Renderização das reservas dentro da célula */}
+    <div className="relative flex flex-col space-y-4 lg:space-y-10 h-full">
+      {dayReservations.length === 0 ? (
+        <div 
+          className="text-center text-[10px] md:text-xs lg:text-base font-extralight flex items-end justify-center h-full"
+          style={{
+            width: '100%',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            textOverflow: 'ellipsis',
+          }}
+        >
+          R$214
+        </div>
+      ) : (
+        dayReservations.map((reservation, index) => {
           const span = getSpanForCurrentCell(reservation);
           const isEndOfWeek = date.day() === 6; // Verifica se é sábado
           const isFirstOfWeek = date.day() === 0; // Verifica se é domingo
           const isStartOnSunday = moment(reservation.checkin).day() === 0; // Verifica se a reserva começa no domingo
-          const coversWeekend = isReservationCoveringWeekend(reservation)
+          // const coversWeekend = isReservationCoveringWeekend(reservation);
 
-          console.log(coversWeekend);
-          
           return isStartOfReservation(reservation) || isContinuationOfReservation(reservation) ? (
             <div
               key={index}
@@ -85,9 +96,7 @@ const isReservationCoveringWeekend = (reservation: Reservation) => {
               style={{
                 gridColumn: `span ${span}`,
                 fontFamily: 'Airbnb Cereal VF, Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif',
-                // left: coversWeekend ? '-20px' : '0',
                 left: isStartOnSunday ? '2px' : isFirstOfWeek ? '-10px' : '0',
-                
                 zIndex: 1,
                 width: isEndOfWeek ? '130%' : `calc(100% * ${span})`,
                 overflow: 'hidden',
@@ -99,10 +108,103 @@ const isReservationCoveringWeekend = (reservation: Reservation) => {
               {isFirstOfWeek ? reservation.name : null}
             </div>
           ) : null;
-        })}
-      </div>
+        })
+      )}
     </div>
-  );
+  </div>
+);
+
+// return (
+//   <div
+//     className={cellStyle}
+//     onClick={() => onClick(date.format('YYYY-MM-DD'))}
+//     style={{ gridColumn: `span ${colSpan || 1}` }}
+//   >
+//     <div className="text-[10px] sm:text-xs text-center py-1 sm:py-2 md:text-sm lg:text-base">{date.format('D')}</div>
+
+//     {/* Renderização das reservas dentro da célula */}
+//     <div className="relative flex flex-col space-y-4 lg:space-y-10">
+//       {dayReservations.length === 0 ? (
+//         <div className="flex justify-center items-end text-[10px] sm:text-xs md:text-base font-semibold">
+//           R$214
+//         </div>
+//       ) : (
+//         dayReservations.map((reservation, index) => {
+//           const span = getSpanForCurrentCell(reservation);
+//           const isEndOfWeek = date.day() === 6; // Verifica se é sábado
+//           const isFirstOfWeek = date.day() === 0; // Verifica se é domingo
+//           const isStartOnSunday = moment(reservation.checkin).day() === 0; // Verifica se a reserva começa no domingo
+//           const coversWeekend = isReservationCoveringWeekend(reservation)
+
+//           return isStartOfReservation(reservation) || isContinuationOfReservation(reservation) ? (
+//             <div
+//               key={index}
+//               className="absolute bg-gray-500 text-white rounded-full px-1 sm:px-5 lg:mr-10 h-3 text-[8px] flex items-center md:h-8 md:text-base truncate tracking-tighter font-semibold"
+//               style={{
+//                 gridColumn: `span ${span}`,
+//                 fontFamily: 'Airbnb Cereal VF, Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif',
+//                 left: isStartOnSunday ? '2px' : isFirstOfWeek ? '-10px' : '0',
+//                 zIndex: 1,
+//                 width: isEndOfWeek ? '130%' : `calc(100% * ${span})`,
+//                 overflow: 'hidden',
+//                 whiteSpace: 'nowrap',
+//                 textOverflow: 'ellipsis',
+//               }}
+//             >
+//               {isStartOfReservation(reservation) ? reservation.name : null}
+//               {isFirstOfWeek ? reservation.name : null}
+//             </div>
+//           ) : null;
+//         })
+//       )}
+//     </div>
+//   </div>
+// );
+
+  // return (
+  //   <div
+  //     className={cellStyle}
+  //     onClick={() => onClick(date.format('YYYY-MM-DD'))}
+  //     style={{ gridColumn: `span ${colSpan || 1}` }}
+  //   >
+  //     <div className="text-[10px] sm:text-xs text-center py-1 sm:py-2 md:text-sm lg:text-base">{date.format('D')}</div>
+
+  //     {/* Renderização das reservas dentro da célula */}
+  //     <div className="relative flex flex-col space-y-4 lg:space-y-10">
+  //       {dayReservations.map((reservation, index) => {
+  //         const span = getSpanForCurrentCell(reservation);
+  //         const isEndOfWeek = date.day() === 6; // Verifica se é sábado
+  //         const isFirstOfWeek = date.day() === 0; // Verifica se é domingo
+  //         const isStartOnSunday = moment(reservation.checkin).day() === 0; // Verifica se a reserva começa no domingo
+  //         const coversWeekend = isReservationCoveringWeekend(reservation)
+
+  //         console.log(coversWeekend);
+          
+  //         return isStartOfReservation(reservation) || isContinuationOfReservation(reservation) ? (
+  //           <div
+  //             key={index}
+  //             className="absolute bg-gray-500 text-white rounded-full px-1 sm:px-5 lg:mr-10 h-3 text-[8px] flex items-center md:h-8 md:text-base truncate tracking-tighter font-semibold"
+  //             style={{
+  //               gridColumn: `span ${span}`,
+  //               fontFamily: 'Airbnb Cereal VF, Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif',
+  //               // left: coversWeekend ? '-20px' : '0',
+  //               left: isStartOnSunday ? '2px' : isFirstOfWeek ? '-10px' : '0',
+                
+  //               zIndex: 1,
+  //               width: isEndOfWeek ? '130%' : `calc(100% * ${span})`,
+  //               overflow: 'hidden',
+  //               whiteSpace: 'nowrap',
+  //               textOverflow: 'ellipsis',
+  //             }}
+  //           >
+  //             {isStartOfReservation(reservation) ? reservation.name : null}
+  //             {isFirstOfWeek ? reservation.name : null}
+  //           </div>
+  //         ) : null;
+  //       })}
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default CalendarCell;
